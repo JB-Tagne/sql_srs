@@ -1,28 +1,65 @@
 import streamlit as st
 import pandas as pd
 import duckdb
-
+import io
 
 st.write("My SQL App Project")
 
-option = st.selectbox(
-    "What would you like to review?",
-    ("Joins", "GroupBy", "Windows Functions"),
-    index=None,
-    placeholder="Select a theme",
-)
+csv = '''
+beverage, price
+orange juice, 2.5
+Expresso, 2
+Tea, 3
+'''
 
-st.write("You selected:", option)
+beverages = pd.read_csv(io.StringIO(csv))
+
+cvs2 = '''
+food_item, food_price
+cookie juice, 2.5
+chocolatine, 2
+muffin, 3
+'''
+
+food_items = pd.read_csv(io.StringIO(cvs2))
+
+answer = """
+SELECT * FROM beverages
+CROSS JOIN food_items
+"""
+
+solution = duckdb.sql(answer).df()
 
 
-data = {"a": [1, 2, 3], "b": [4, 5, 6]}
-df = pd.DataFrame(data)
+with st.sidebar:
+    option = st.selectbox(
+        "What would you like to review?",
+        ("Joins", "GroupBy", "Windows Functions"),
+        index=None,
+        placeholder="Select a theme",
+    )
 
-tab1, tab2, tab3 = st.tabs(["Cat", "Dog", "Owl"])
+    st.write("You selected:", option)
 
-with tab1:
-    sql_query = st.text_area(label="Entrez votre texte")
-    result = duckdb.query(sql_query).df()
-    st.write(f"Vous avez entré la variable suivante {sql_query}")
+
+st.header("Enter your code")
+query = st.text_area(label="Votre code SQL ici", key="user_input")
+if query:
+    result = duckdb.query(query).df()
     st.dataframe(result)
+
+
+tab2, tab3 = st.tabs(["Tables", "Solution"])
+
+with tab2:
+    st.write("table: beverages")
+    st.dataframe(beverages)
+    st.write("table: food_items")
+    st.dataframe(food_items)
+    st.write("expected:")
+    st.dataframe(solution)
+
+with tab3:
+    st.write(answer)
+
 
