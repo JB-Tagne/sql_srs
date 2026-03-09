@@ -1,5 +1,6 @@
 # pylint: disable=missing-module-docstring
 
+
 import os
 import logging
 import duckdb
@@ -100,4 +101,7 @@ with tab2:
         st.dataframe(df_table)
 
 with tab3:
+    exercise_name = exercise.loc[0, "exercise_name"]
+    with open(f"answers/{exercise_name}, sql", "r") as f:
+        answer = f.read()
     st.write(answer)
