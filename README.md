@@ -55,12 +55,14 @@ Organisation du projet
 sql_srs/ ├─ app.py # Application principale Streamlit ├─ init_db.py # Script d'initialisation de la base de données ├─ data/ # Base de données DuckDB ├─ answers/ # Fichiers SQL des réponses ├─ requirements.txt └─ README.md
 
 Extensions possibles
-Ajouter de nouveaux exercices et thèmes SQL
 
-Améliorer l’UI pour plus d’interactivité et de lisibilité
-
-Implémenter un système multi-utilisateurs avec login
-
-Formatter automatiquement les requêtes SQL pour plus de lisibilité
-
-Ajouter un suivi graphique des progrès
+- Ajouter de nouveaux exercices SQL et étendre les thématiques d’apprentissage
+- Améliorer l’interface utilisateur pour une expérience plus interactive et intuitive
+- Implémenter un système d’authentification multi-utilisateurs
+- Ajouter un formatage automatique des requêtes SQL pour améliorer leur lisibilité
+- Mettre en place un tableau de bord de suivi des progrès des utilisateurs
+- Implémenter une correction intelligente basée sur la comparaison des résultats des requêtes
+- Introduire des niveaux de difficulté et des tags par concepts SQL (JOIN, GROUP BY, WINDOW FUNCTIONS, etc.)
+- Générer dynamiquement des jeux de données pour éviter la mémorisation des réponses
+- Ajouter un système d’indices contextuels pour accompagner l’apprentissage
+- Proposer un mode défi chronométré pour tester les compétences SQL
