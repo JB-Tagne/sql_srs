@@ -1,4 +1,5 @@
 Description
+
 SQL SRS est une application interactive développée avec Streamlit et DuckDB pour pratiquer et réviser les requêtes SQL de manière efficace.
 
 L’application permet de :
